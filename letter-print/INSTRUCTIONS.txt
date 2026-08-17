@@ -1,0 +1,51 @@
+KAP LETTER MERGE TOOL
+=====================
+
+WHAT THIS IS
+A reusable template + CSV workflow. You edit one CSV of recipients; the tool
+merges each row into the branded KAP letter and outputs print-ready PDFs
+(216 x 303mm = A4 + 3mm bleed, per Stannp's A4 letter guide), ready to upload
+to Stannp. The back (credentials) page is the same on every letter.
+
+FILES
+  template_front.html   the letter template with merge fields (front page)
+  template_back.html     the static credentials page (back) - no editing needed
+  merge_letters.py       the merge tool
+  recipients.csv         your data - EDIT THIS (one row = one letter)
+
+THE CSV COLUMNS (keep the header row exactly)
+  date       e.g. 16 July 2026        (printed top-right)
+  name       e.g. The Homeowner       (first line of the address block)
+  address1   e.g. 18 Kingsbere Crescent
+  address2   optional (e.g. Broadstone) - leave blank if not needed
+  city       e.g. Dorchester
+  postcode   e.g. DT1 2DY
+  body1      first letter paragraph
+  body2      second paragraph
+  body3      third paragraph
+
+HOW TO RUN
+  1. Edit recipients.csv with your leads (Excel/Numbers/Google Sheets all export CSV).
+  2. Run:  python3 merge_letters.py recipients.csv
+  3. Find the PDFs + a combined proof in the 'output' folder.
+  4. Upload the individual PDFs to Stannp (run as a TEST batch first to check cost/proof).
+
+REQUIREMENTS (one-time, for whoever runs it)
+  pip install playwright pypdf
+  python3 -m playwright install chromium
+
+NOTES
+  - The recipient address sits in Stannp's address box (clear zone) so it's
+    machine-readable and shows through a C5 window envelope.
+  - Keep body text to ~3 short paragraphs so the front fits one page.
+  - The live SiteSignal system will do this merge automatically per lead; this
+    tool is the manual version for ad-hoc batches.
+
+PRODUCTION STANDARD (from the first printed batch, July 2026)
+- Sign-off uses the full legal name "KAP Woodwork & Building Services Ltd."
+- Footer carries "Registered in England & Wales, company no. 15941439"
+  (legally required for a UK Ltd company on business letters).
+- Dates are ordinal ("17th July 2026").
+- Faint "K" monogram watermark sits behind the letter body.
+- Stannp adds its own mailing reference + tracking barcode under the address
+  block automatically — keep that zone clear (the template already does).

@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600;700&display=swap');
+:root{--gold:#FDAE12;--black:#050505;--char:#141416;--cream:#F3ECDD;--green:#3E8C5A;--mute:#8A8A8D;--line:#2A2A2D}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--cream);font-family:'Montserrat',system-ui,sans-serif}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.eye{letter-spacing:.2em;text-transform:uppercase}
+a{color:var(--gold)}
+.btn{cursor:pointer;border:none;font-family:inherit;transition:opacity .15s}.btn:hover{opacity:.85}
+textarea{font-family:inherit}
